@@ -19,7 +19,7 @@ const Login = props =>{
       [e.target.name]: e.target.value
     })
   }
-  const handleLogin = (e) =>{
+  const handleRegister = (e) =>{
     console.log('loggin in..')
     e.preventDefault();
     if(form.username !== '' && form.password !== ''){
@@ -81,7 +81,7 @@ const Login = props =>{
           </span>
         </div>
       </div>
-      <button onClick={(e)=> handleLogin(e)}className="button is-dark is-large is-rounded">Register</button>
+      <button onClick={(e)=> handleRegister(e)}className="button is-dark is-large is-rounded">Register</button>
       </form>
       </div>
     )
