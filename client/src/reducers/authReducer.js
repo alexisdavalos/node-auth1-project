@@ -1,24 +1,24 @@
 // Create a new reducer and import actions from appropriate action file; in this case it's index.js
-import { FETCH_TOGGLE, FETCH_SUCCESS } from '../actions';
+import { LOGIN_START, LOGIN_SUCCESS } from '../actions';
 
 const initialState = {
-  kanyeism: 'I love Redux like Kanye loves Kanye',
-  error: '',
-  isFetching: false
+  isLoggedIn: false,
+  isFetching: false,
+  error: ''
 }
 
-export const asyncReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
 	switch(action.type){
-		case FETCH_TOGGLE:
+		case LOGIN_START:
 			return {
 				...state,
 				isFetching: !state.isFetching,
 				error: action.payload ? action.payload : ''
 			}
-		case FETCH_SUCCESS:
+		case LOGIN_SUCCESS:
 			return {
 				...state,
-				kanyeism: action.payload,
+				isLoggedIn: true,
 				isFetching: false,
                 error: ''
             }

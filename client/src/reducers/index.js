@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-import {asyncReducer} from './asyncReducer'
-import {syncReducer} from './syncReducer'
+import {authReducer} from './authReducer'
 // You'll also need to import any other necessary custom reducers.
 
 const rootReducer = combineReducers({
-    async: asyncReducer,
-    sync: syncReducer
+    auth: authReducer,
 	// Include any other reducers required by your application.
 });
 
