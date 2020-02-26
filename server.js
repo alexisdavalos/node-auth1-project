@@ -19,7 +19,7 @@ const sessionConfig = {
     resave: false,
     saveUninitialized: true, //related to GDPR compliance
     cookie: {
-        maxAge: 1000* 20, //60 minute cookie
+        maxAge: 1000* 60 * 10, //60 minute cookie
         secure: false, //should be true in production
         httpOnly: true //true means JS can't touch the cookie
     },
