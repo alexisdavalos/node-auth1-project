@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login, actionName} from '../../actions'
 
@@ -7,6 +8,7 @@ const Login = props =>{
     username: '',
     password: ''
   });
+
   const [error, setError] = useState(false);
   console.log(form)
   console.log('Props in Login.js:', props)
@@ -28,6 +30,16 @@ const Login = props =>{
     }
   }
     return(
+      <div className="form">
+      <div className='selector'>
+        <h1>Welcome! Please Register</h1>
+        <Link to="/login">
+          <button className="button is-dark is-large">Login</button>
+        </Link>
+        <Link to="/register">
+          <button className="button is-dark is-large">Register</button>
+        </Link>
+      </div>
       <form>
       <div className="field">
         <label className="label is-large has-text-white is-pulled-left">Username</label>
@@ -69,8 +81,9 @@ const Login = props =>{
           </span>
         </div>
       </div>
-      <button onClick={(e)=> handleLogin(e)}className="button is-dark is-large is-rounded">Login</button>
+      <button onClick={(e)=> handleLogin(e)}className="button is-dark is-large is-rounded">Register</button>
       </form>
+      </div>
     )
 }
 
