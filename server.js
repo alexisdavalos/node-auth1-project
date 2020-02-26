@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const server = express();
 const session = require('express-session');
-const KnexStore = require('connect-session-knex')(session);
+const KnexStore = require('connect-session-knex')(session); //connects session config to knex
 
 //Routers Import
 //restricted middleware
@@ -19,11 +19,11 @@ const sessionConfig = {
     resave: false,
     saveUninitialized: true, //related to GDPR compliance
     cookie: {
-        maxAge: 1000* 60 * 10, //60 minute cookie
+        maxAge: 1000* 20, //60 minute cookie
         secure: false, //should be true in production
         httpOnly: true //true means JS can't touch the cookie
     },
-    store: new KnexStore({
+    store: new KnexStore({ //creates table for sessions
         knex,
         tablename: 'sessions',
         createtable: true,
@@ -38,7 +38,7 @@ server.use(session(sessionConfig));
 
 //Routes
 server.use('/api/auth', authRouter)
-server.use('/api/users', restricted, userRouter)
+server.use('/api/restricted', restricted, userRouter)
 
 server.use('/', (req, res) =>{
     res.send('<h1>Node Auth 1 Project</h1>')
